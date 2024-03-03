@@ -3,14 +3,13 @@
     <q-card
       class="login-card bg-secondary row wrap justify-center items-center q-px-sm"
     >
-      <div>
-        <q-img
-          class="rounded-borders"
-          src="~/assets/imgs/eb-logo.png"
-          width="120px"
-        />
-      </div>
       <q-form class="input-container">
+        <q-input
+          class="q-my-sm"
+          rounded
+          standout="bg-white"
+          label="Nome completo"
+        />
         <q-input class="q-my-sm" rounded standout="bg-white" label="Email" />
         <q-input
           class="q-my-sm"
@@ -19,10 +18,17 @@
           label="Senha"
           type="password"
         />
+        <q-input
+          class="q-my-sm"
+          rounded
+          standout="bg-white"
+          label="Confirme a senha"
+          type="password"
+        />
         <div class="btn-container flex justify-between q-px-sm">
           <!-- Redirect to index temporarily -->
-          <q-btn color="positive" label="Entrar" to="/" />
-          <q-btn color="dark" label="Cadastrar" to="/signup" />
+          <q-btn color="positive" label="Cadastrar" to="/" />
+          <q-btn color="dark" label="Voltar" to="/login" />
         </div>
       </q-form>
     </q-card>
