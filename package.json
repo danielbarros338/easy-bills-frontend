@@ -1,9 +1,10 @@
 {
-  "name": "cogasp-frontend",
+  "name": "easy-bills-frontend",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "Cogasp",
-  "author": "danielbarros.dev.contato@gmail.com",
+  "productName": "Easy Bills",
+  "author": "Daniel Barros <danielbarros.dev.contato@gmail.com>",
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
