@@ -1,5 +1,5 @@
 <template>
-  <div class="row text-white">
+  <div class="row">
     <div class="col-12">
       <q-btn
         color="positive"

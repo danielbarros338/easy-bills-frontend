@@ -1,5 +1,5 @@
 <template>
-  <q-card class="card bg-secondary q-px-sm">
+  <q-card :class="['card q-px-sm', background]">
     <q-card-section v-if="head" class="row wrap justify-center items-center">
       <slot name="head" />
     </q-card-section>
@@ -16,9 +16,7 @@
       </q-form>
     </q-card-section>
     <q-card-section v-else class="row wrap justify-center items-center">
-      <div class="flex wrap justify-center items-center">
-        <slot name="body" />
-      </div>
+      <slot name="body" />
     </q-card-section>
   </q-card>
 </template>
@@ -40,6 +38,10 @@ defineProps({
   form: {
     type: Boolean,
     default: false,
+  },
+  background: {
+    type: String,
+    default: "bg-secondary",
   },
 });
 </script>
