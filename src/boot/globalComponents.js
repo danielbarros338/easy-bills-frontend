@@ -1,6 +1,6 @@
 import { boot } from "quasar/wrappers";
-import NavbarComponent from "./../components/layout/NavbarComponent.vue";
+import CardBaseComponent from "./../components/shared/CardBaseComponent.vue";
 
 export default boot(async ({ app }) => {
-  app.component("NavbarComponent", NavbarComponent);
+  app.component("CardBaseComponent", CardBaseComponent);
 });

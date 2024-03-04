@@ -4,7 +4,16 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
-      { path: "/control", component: () => import("pages/ControlPage.vue") },
+      {
+        path: "/control",
+        component: () => import("src/pages/control/ControlPage.vue"),
+        children: [
+          {
+            path: "new-month",
+            component: () => import("src/pages/control/NewMonthPage.vue"),
+          },
+        ],
+      },
     ],
   },
   {

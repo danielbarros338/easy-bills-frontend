@@ -1,31 +1,31 @@
 <template>
   <div class="container bg-primary row justify-center items-center">
-    <q-card
-      class="login-card bg-secondary row wrap justify-center items-center q-px-sm"
-    >
-      <div>
+    <CardBaseComponent :form="true" :head="true">
+      <template #head>
         <q-img
           class="rounded-borders"
           src="~/assets/imgs/eb-logo.png"
           width="120px"
         />
-      </div>
-      <q-form class="input-container">
-        <q-input class="q-my-sm" rounded standout="bg-white" label="Email" />
+      </template>
+
+      <template #body>
+        <q-input class="full-width" rounded standout="bg-white" label="Email" />
         <q-input
-          class="q-my-sm"
+          class="full-width q-my-sm"
           rounded
           standout="bg-white"
           label="Senha"
           type="password"
         />
-        <div class="btn-container flex justify-between q-px-sm">
-          <!-- Redirect to index temporarily -->
-          <q-btn color="positive" label="Entrar" to="/" />
-          <q-btn color="dark" label="Cadastrar" to="/signup" />
-        </div>
-      </q-form>
-    </q-card>
+      </template>
+
+      <template #btn_container>
+        <!-- Redirect to index temporarily -->
+        <q-btn color="positive" label="Entrar" to="/" />
+        <q-btn color="dark" label="Cadastrar" to="/signup" />
+      </template>
+    </CardBaseComponent>
   </div>
 </template>
 
@@ -39,11 +39,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.login-card {
-  height: 50%;
-  width: 100%;
-}
-.input-container {
+.inputs {
   width: 100%;
 }
 </style>

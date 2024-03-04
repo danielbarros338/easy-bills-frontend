@@ -9,8 +9,13 @@
 </template>
 
 <script>
+import NavbarComponent from "./../components/layout/NavbarComponent.vue";
+
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "MainLayout",
+  components: {
+    NavbarComponent,
+  },
 });
 </script>
