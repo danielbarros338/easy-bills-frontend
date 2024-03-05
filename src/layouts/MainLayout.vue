@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr lFf">
     <NavbarComponent />
 
-    <q-page-container class="container bg-primary">
+    <q-page-container class="container bg-primary" style="overflow-y: scroll">
       <router-view />
     </q-page-container>
   </q-layout>

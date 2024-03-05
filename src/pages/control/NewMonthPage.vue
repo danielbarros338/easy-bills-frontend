@@ -15,6 +15,22 @@
         <EarningComponent title="Novo ganho" />
         <q-btn class="float-right" rounded color="positive" label="+" />
       </div>
+
+      <div class="col-12 spending-container text-dark">
+        <h5 class="full-width q-my-sm">Gastos</h5>
+
+        <div class="full-width table-container text-dark">
+          <q-table></q-table>
+        </div>
+
+        <SpendingComponent title="Novo gasto" />
+        <q-btn class="float-right" rounded color="positive" label="+" />
+      </div>
+
+      <div class="col-12 flex justify-between btn-container q-mt-lg">
+        <q-btn color="positive" label="Salvar" />
+        <q-btn color="dark" label="Voltar" to="/control" />
+      </div>
     </template>
   </CardBaseComponent>
 </template>
