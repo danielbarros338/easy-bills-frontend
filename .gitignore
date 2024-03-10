@@ -5,6 +5,9 @@
 node_modules
 yarn.lock
 
+.env.development
+.env.production
+
 # Quasar core related directories
 .quasar
 /dist

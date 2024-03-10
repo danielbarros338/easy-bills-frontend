@@ -2,10 +2,25 @@
   <div class="row">
     <div class="col-12">
       <q-btn
+        class="q-ma-sm"
         color="positive"
-        label="Iniciar novo mês"
+        label="Novo mês"
         to="/control/new-month"
       />
+
+      <!-- <q-btn
+        class="q-ma-sm"
+        color="positive"
+        label="Editar mês"
+        to="/control/edit-month"
+      />
+
+      <q-btn
+        class="q-ma-sm"
+        color="positive"
+        label="Lista de meses"
+        to="/control/list-month"
+      /> -->
     </div>
     <div class="col-12">
       <router-view></router-view>

@@ -63,14 +63,20 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: require("dotenv").config({
+        path: process.env.NODE_ENV ? ".env.development" : ".env.production",
+      }).parsed,
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf, { isServer, isClient }) {
+        Object.assign(viteConf.resolve.alias, {
+          "@": path.join(__dirname, "./src"),
+        });
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [
@@ -117,7 +123,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ["Notify"],
     },
 
     // animations: 'all', // --- includes all animations
