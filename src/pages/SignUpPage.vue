@@ -1,46 +1,53 @@
 <template>
   <div class="container bg-primary row justify-center items-center">
-    <q-card
-      class="login-card bg-secondary row wrap justify-center items-center q-px-sm"
-    >
-      <q-form class="input-container" @submit="signUp">
-        <q-input
-          v-model="user.name"
-          class="q-my-sm"
-          rounded
-          standout="bg-secondary"
-          label="Nome completo"
-        />
-        <q-input
-          v-model="user.email"
-          class="q-my-sm"
-          rounded
-          standout="bg-secondary"
-          label="Email"
-        />
-        <q-input
-          v-model="user.password"
-          class="q-my-sm"
-          rounded
-          standout="bg-secondary"
-          label="Senha"
-          type="password"
-        />
-        <q-input
-          v-model="confirmPass"
-          class="q-my-sm"
-          rounded
-          standout="bg-secondary"
-          label="Confirme a senha"
-          type="password"
-        />
-        <div class="btn-container flex justify-between q-px-sm">
-          <!-- Redirect to index temporarily -->
-          <q-btn color="positive" label="Cadastrar" @click="signUp" />
-          <q-btn color="dark" label="Voltar" to="/login" />
-        </div>
-      </q-form>
-    </q-card>
+    <CardBaseComponent>
+      <template #body>
+        <q-form class="input-container" @submit="signUp">
+          <q-input
+            v-model="user.name"
+            name="name"
+            class="q-my-sm"
+            rounded
+            standout="bg-secondary"
+            label="Nome completo"
+            :rules="[inputRules.name]"
+          />
+          <q-input
+            v-model="user.email"
+            name="email"
+            class="q-my-sm"
+            rounded
+            standout="bg-secondary"
+            label="Email"
+            :rules="[inputRules.email]"
+          />
+          <q-input
+            v-model="user.password"
+            name="password"
+            class="q-my-sm"
+            rounded
+            standout="bg-secondary"
+            label="Senha"
+            type="password"
+            :rules="[inputRules.password]"
+          />
+          <q-input
+            v-model="confirmPass"
+            class="q-my-sm"
+            rounded
+            standout="bg-secondary"
+            label="Confirme a senha"
+            type="password"
+            :rules="[inputRules.confirmPass]"
+          />
+          <div class="btn-container flex justify-between q-px-sm">
+            <!-- Redirect to index temporarily -->
+            <q-btn color="positive" label="Cadastrar" type="submit" />
+            <q-btn color="dark" label="Voltar" to="/login" />
+          </div>
+        </q-form>
+      </template>
+    </CardBaseComponent>
   </div>
 </template>
 
@@ -53,11 +60,16 @@ export default defineComponent({
 </script>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useAuthStore } from "src/stores/auth";
 import { useQuasar } from "quasar";
 
+import notify from "@/utils/notify.js";
+import { inputRules } from "@/utils/rulesAndVerifications.js";
+
 const authStore = useAuthStore();
+const $router = useRouter();
 const $q = useQuasar();
 
 const confirmPass = ref("");
@@ -70,7 +82,23 @@ const user = ref({
 async function signUp(e) {
   e.preventDefault();
 
-  const response = await authStore.signUp(user.value);
+  if (!_verifyValues()) return;
+
+  const goToHome = await authStore.signUp(user.value);
+
+  if (goToHome) {
+    $router.push("/");
+  }
+}
+
+function _verifyValues() {
+  if (user.value.password !== confirmPass.value) {
+    notify.error("As senhas não são iguais.");
+
+    return false;
+  }
+
+  return true;
 }
 </script>
 
